@@ -32,18 +32,19 @@ public class Producer implements Runnable {
 
     public void produce(int data) throws InterruptedException {
 
-        /** Use loop to handle to case when multiple threads waiting for loop **/
-        while (isQueueFull()) {
-            synchronized (queue) {
-                log("Queue is full %s is waiting , size\n", Thread.currentThread().getName(), queue.size());
-                queue.wait();
-            }
-        }
-
         synchronized (queue) {
+
+            /** Use loop to handle to case when multiple threads waiting for loop **/
+            while (isQueueFull()) {
+                log("Queue is full %s is waiting , size\n", Thread.currentThread().getName(), queue.size());
+
+                queue.wait(); /**  Releases lock, and reacquires on wakeup **/
+            }
+
             queue.add(data);
             queue.notifyAll();
         }
+
     }
 
     private void log(String format, String threadName, int queueSize) {
