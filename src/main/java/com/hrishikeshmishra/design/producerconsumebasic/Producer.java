@@ -32,7 +32,8 @@ public class Producer implements Runnable {
 
     public void produce(int data) throws InterruptedException {
 
-        if (isQueueFull()) {  //@TODO Check here for loop
+        /** Use loop to handle to case when multiple threads waiting for loop **/
+        while (isQueueFull()) {
             synchronized (queue) {
                 log("Queue is full %s is waiting , size\n", Thread.currentThread().getName(), queue.size());
                 queue.wait();

@@ -29,7 +29,8 @@ public class Consumer implements Runnable {
 
     public Integer consume() throws InterruptedException {
 
-        if (queue.isEmpty()) {
+        /** Used while to support multiple thread running currently and waiting for lock **/
+        while (queue.isEmpty()) {
             synchronized (queue) {
                 log("Queue is empty %s is waiting.\n", Thread.currentThread().getName());
                 queue.wait();
