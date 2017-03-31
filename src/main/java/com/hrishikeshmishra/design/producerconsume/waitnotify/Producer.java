@@ -1,4 +1,4 @@
-package com.hrishikeshmishra.design.producerconsumebasic;
+package com.hrishikeshmishra.design.producerconsume.waitnotify;
 
 import java.util.Queue;
 import java.util.Random;
