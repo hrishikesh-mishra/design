@@ -5,7 +5,12 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
+ * CountDownLatch:
+ * A synchronization aid that allows one or more threads to wait until a set of operations being
+ * performed in other threads completes.
+ *
  * @author hrishikesh.mishra
+ * @link http://docs.oracle.com/javase/7/docs/api/java/util/concurrent/CountDownLatch.html
  */
 public class Application {
 
@@ -29,7 +34,6 @@ public class Application {
         countDownLatch.await();
 
         System.out.println("\n\nAll Services To Started.\n\n");
-
 
 
     }
